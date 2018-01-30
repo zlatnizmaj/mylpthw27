@@ -55,3 +55,4 @@ crouse = Salmon()
 harry = Halibut()
 
 print frank.name, rover.name, frank.salary
+print mary.name
