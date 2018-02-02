@@ -80,8 +80,10 @@ class LaserWeaponArmory(Scene):
         print "wrong 10 times then the lock closes forever and you can't"
         print "get the bomb. The code is 3 digits."
         code = "%d%d%d" % (randint(1, 9), randint(1, 9), randint(1, 9))
+        print code
         guess = raw_input("[keypad]> ")
         guesses = 0
+        print code
 
         while guess != code and guesses < 10:
             print "BZZZZZEDDDDD!"
@@ -92,7 +94,7 @@ class LaserWeaponArmory(Scene):
             print "The container clicks open and the seal breaks, letiing gas out."
             print "You grab the neutron bomb and run as fast as you can to the"
             print "brigde where you must place it in the fight spot"
-            return 'the brigde'
+            return 'the_bridge'
         else:
             print "The lock buxxes one last time and then you hear a sickening"
             print "melting sound as the mechanism is fused together."
@@ -131,7 +133,7 @@ class TheBridge(Scene):
             return 'escape_pod'
         else:
             print "DOES NOT COMPUTE"
-            return "the_brigde"
+            return "the_bridge"
 
 class EscapePod(Scene):
     def enter(self):
@@ -144,6 +146,7 @@ class EscapePod(Scene):
         print "do you take?"
 
         good_pod = randint(1, 5)
+        print good_pod
         guess = raw_input("[pod #]> ")
 
         if int(guess) != good_pod:
@@ -162,6 +165,11 @@ class EscapePod(Scene):
 
             return 'finished'
 
+class Finished(Scene):
+    def enter(self):
+        print "You won ! Game ended!"
+        return exit(1)
+
 class Map(object):
 
     scenes = {
@@ -169,7 +177,8 @@ class Map(object):
         'laser_weapon_armory': LaserWeaponArmory(),
         'the_bridge': TheBridge(),
         'escape_pod': EscapePod(),
-        'death': Death()
+        'death': Death(),
+        'finished': Finished()
     }
 
     def __init__(self, start_scene):
