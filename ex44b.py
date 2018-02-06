@@ -7,4 +7,8 @@ class Child(Parent):
     def override(self):
         print "CHILD override()"
 
-dad
+dad = Parent()
+son = Child()
+
+dad.override()
+son.override()
